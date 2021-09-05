@@ -1,0 +1,9 @@
+---
+env: nvim
+  name: coq.nvim
+requires:
+  dnf:
+    - python3-venv
+    - sqlite
+    - python >= 3.8.2
+---

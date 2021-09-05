@@ -1,0 +1,9 @@
+---
+env: nvim
+  name: nvim-cmp
+requires:
+  nvim:
+    - cmp-buffer
+    - vim-vsnip
+    - hrsh7th/nvim-cmp
+---
