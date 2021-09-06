@@ -1,6 +1,8 @@
 #!/bin/bash
-# Functions and script for interpreting queue templates
+# Functions and script for interpreting queue templates and dumping results to YAML-esque format
 
+# IDEA: Use udev rule-like syntax for template modification (i.e., "+=" operator
+# for arrays, ":=" for static defn, etc.)
 __print_array() {
     local -n ref="$1"
     printf '%s\n' ""
@@ -24,6 +26,9 @@ __print_val() {
     esac
 }
 
+parsed="$(getopt -o "$(printf '%s' "${!opts[@]}")" \
+    --long "$(printf '%s,' "${opts[@]}" | sed 's/,$//')")"
+
 req() {
     :
 }
@@ -33,5 +38,13 @@ opt() {
 }
 
 def() {
+    :
+}
+
+uid() {
+    :
+}
+
+final() {
     :
 }
