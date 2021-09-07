@@ -1,0 +1,30 @@
+
+;; Application settings and global vars
+
+include-file = ~/.config/polybar/global/global-wm.conf
+include-file = ~/.config/polybar/global/settings.conf
+include-file = ~/.config/polybar/global/colors.conf
+
+;; Bars
+
+include-file = ~/.config/polybar/bars/bar_primary.conf
+
+;; Modules 
+
+include-file = ~/.config/polybar/modules/manifest.conf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
