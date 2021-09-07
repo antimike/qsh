@@ -1,0 +1,27 @@
+# Example of per-package Makefile taken from https://www.reddit.com/r/commandline/comments/m3slwb/how_to_manage_your_dotfiles_with_make/
+
+SRC_DIR    := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+TARGET_DIR := ~/.vim
+PLUG_URL   := https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+PLUG_PATH  := $(SRC_DIR)/autoload/plug.vim
+
+include ../lib/shared.mk
+
+up:
+	if (( $$+commands[vim] )) ; then
+	  $(report) header "Setting up vim"
+	  $(mk_link) $(SRC_DIR) $(TARGET_DIR)
+	  $(mk_link) $(SRC_DIR)/vimrc ~/.vimrc
+	  $(report) header "Upgrading vim"
+	  curl -fsLo $(PLUG_PATH) $(PLUG_URL) \
+	    ; $(report) "vim plug downloaded"
+	  vim +PlugInstall +PlugUpdate +qall \
+	    ; $(report) "downloading/updating plugins"
+	else
+	  $(report) warn "cannot find vim?"
+	fi
+
+down:
+	$(report) header "Removing vim config"
+	$(rm_link) ~/.vimrc
+	$(rm_link) $(TARGET_DIR)
