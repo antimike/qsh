@@ -52,3 +52,7 @@
         * Has simple "up" and "down" targets for quick install / teardown
     * Uses GNU Stow
     * Forked as "dotfiles-5"
+
+## TODOs
+
+- [ ] Use or write a templating library instead of using env variables
