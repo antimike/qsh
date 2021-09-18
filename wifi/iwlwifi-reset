@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# URL: https://askubuntu.com/questions/951261/wifi-available-networks-not-showing-up-suddenly/
+# NAME: /lib/systemd/system-sleep/iwlwifi-reset
+# DESC: Resets Intel WiFi which can be flakey after a long suspend.
+# DATE: Apr 1, 2017. Modified August 30, 2017.
+
+MYNAME=$0
+
+exit
+
+restart_wifi() {
+    /usr/bin/logger $MYNAME 'restart_wifi BEGIN'
+    /sbin/modprobe -v -r iwldvm # This removes iwlwifi too
+    /sbin/modprobe -v iwlwifi   # This starts iwldvm too
+#    systemctl restart NetworkManager.service
+    /usr/bin/logger 'systemctl restart NetworkManager.service (SUPPRESSED)'
+    /usr/bin/logger $MYNAME 'restart_wifi END'
+}
+
+/usr/bin/logger $MYNAME 'case=[' ${1}' ]'
+case "${1}/${2}" in
+    hibernate|suspend|pre*)
+      ;;
+    resume|thaw|post*)
+      restart_wifi;;
+esac
