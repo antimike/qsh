@@ -112,17 +112,17 @@ unsetopt HIST_VERIFY
 # see man zshoptions
 setopt HIST_IGNORE_SPACE
 
-source $SOURCE_DIR/forgit/forgit.plugin.zsh
-# eval "$(mcfly init zsh)"
-# Something to consider: Adding personal zsh completion/functions dir
-# See https://superuser.com/questions/431758/adding-a-trigger-command-to-autocomplete-function-in-zsh
-# fpath=($DOTFILES/tag-terminal/functions-personal $fpath)
-source ${SOURCE_DIR}/forgit/forgit.plugin.zsh
-_dotbare_completion_cmd
-
+# source $SOURCE_DIR/forgit/forgit.plugin.zsh
+# # eval "$(mcfly init zsh)"
+# # Something to consider: Adding personal zsh completion/functions dir
+# # See https://superuser.com/questions/431758/adding-a-trigger-command-to-autocomplete-function-in-zsh
+# # fpath=($DOTFILES/tag-terminal/functions-personal $fpath)
+# source ${SOURCE_DIR}/forgit/forgit.plugin.zsh
+# _dotbare_completion_cmd
+# 
 zvm_after_init_commands+=(zvm_init zvm_init_fzf)
 [[ -s "$MARKER_SOURCE" ]] && source "$MARKER_SOURCE"
-eval "$(fasd --init auto)"
-source "$SOURCE_DIR/fuzzy-fs/fuzzy-fs"
-source /usr/share/autojump/autojump.sh
+# eval "$(fasd --init auto)"
+# source "$SOURCE_DIR/fuzzy-fs/fuzzy-fs"
+source /usr/share/autojump/autojump.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
