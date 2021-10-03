@@ -26,3 +26,4 @@ all:
   - z
 vi:
   - vi-mode
+  - zsh-vi-mode
