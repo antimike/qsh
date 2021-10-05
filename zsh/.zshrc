@@ -126,3 +126,5 @@ zvm_after_init_commands+=(zvm_init zvm_init_fzf)
 # source "$SOURCE_DIR/fuzzy-fs/fuzzy-fs"
 source /usr/share/autojump/autojump.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
