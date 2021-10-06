@@ -128,3 +128,8 @@ source /usr/share/autojump/autojump.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+
+# Make sure run-help works correctly
+# TODO: Improve this with personalized run-help implementation
+unalias run-help
+autoload run-help
