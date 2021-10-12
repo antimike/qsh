@@ -14,7 +14,7 @@ ZSH_THEME="random"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "spaceship" )
+ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "spaceship" "avit")
 # Themes tried and rejected: "bira"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -71,11 +71,19 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "spaceship" )
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse zsh-vi-mode)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf vi-mode zsh-vi-mode git colorize command-not-found copybuffer copydir copyfile dnf extract github git-prompt pip safe-paste sudo taskwarrior themes web-search autojump zsh_reload zsh-syntax-highlighting colored-man-pages dotbare z)
+plugins=(fzf vi-mode zsh-vi-mode git colorize command-not-found copybuffer copydir copyfile dnf extract github git-prompt pip safe-paste sudo taskwarrior themes web-search autojump zsh_reload zsh-syntax-highlighting colored-man-pages dotbare z git-annex cabal cargo)
+plugins+=(dircycle)
+plugins+=(asdf)
 # Plugins to consider:
 # globalias (globbing triggered by <space>)
 # thefuck (corrects previous command with Esc-Esc; conflicts with 'sudo' plugin)
 # timer (displays command completion times)
+# battery
+# asdf
+# catimg
+# direnv
+# dotenv (same as direnv, but without dependency on external direnv tool)
+# fbterm
 
 source $ZSH/oh-my-zsh.sh
 
