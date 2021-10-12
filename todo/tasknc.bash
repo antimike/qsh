@@ -19,7 +19,8 @@ _install_dependencies() {
 }
 
 _clone_repo() {
-    local repo="tasknc" dest="${SOURCE_DIR}/${repo}"
+    local repo="tasknc" 
+    local dest="${SOURCE_DIR:-$HOME/Source}/${repo}"
     local url="https://github.com/lharding/${repo}.git"
     git clone "$url" "$dest" && echo "$dest"
     return $?
@@ -27,9 +28,14 @@ _clone_repo() {
 
 main() {
     local cloned=
+    local -i status
     cloned="$(_clone_repo)" &&
         _install_dependencies &&
         pushd "$cloned" >/dev/null &&
         _install_tasknc
+    status=$?
     popd >/dev/null
+    exit $status
 }
+
+main "$@"
