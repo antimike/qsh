@@ -1,0 +1,483 @@
+Query:
+  - name: jq
+    requires: []
+    install:
+      dnf:
+        package: jq
+        comment: None
+    language:
+      query: JQ
+      src: C
+    input: [JSON]
+    output: [JSON]
+    description: |
+      CLI tool and query language for parsing and processing JSON.
+    ratings:
+      learning:
+        difficulty: 80
+        status: 80
+      power: &ref-max-power 100
+      niceness: 90
+      convenience: 90
+    comments: []
+    tags: []
+  - name: jo
+    requires: [jq]
+    install:
+      repo:
+        url: https://github.com/jpmens/jo
+        dest: $ENV.SOURCE_DIR + "/jo"
+        cmd: |
+          autoreconf -i
+          ./configure
+          make check
+          make install
+    language:
+      query: JQ
+      src: [C, Shell]
+    input: [Shell]
+    output: [JSON]
+    description: |
+      Utility to create JSON objects from command-line arguments
+    ratings:
+      learning:
+        difficulty: 5
+        status: 80
+      power: 20
+      niceness: 95
+      convenience: 100
+    comments: []
+    tags: []
+  - name: graphtage
+    requires: [pip]
+    install:
+      pip:
+        package: graphtage
+        opts: &ref-std-pip-opts
+          venv: None
+          flags: [--user, --upgrade]
+    language:
+      query: DSL
+      src: [Python]
+    input: [JSON, YAML, ...]
+    output: [diff]
+    description: |
+      Diffing utility for structured text
+    ratings:
+      learning:
+        difficulty: 50
+        status: 10
+      power: 50
+      niceness: 40
+      convenience: 70
+    comments: []
+    tags: [diff]
+  - name: jid
+    requires: []
+    description: &jid-desc "Json Incremental Digger: Interactive JSON explorer"
+    install:
+      dnf:
+        package: jid
+        comment: *jid-desc
+    language:
+      query: UNIX
+      src: [golang]
+    input: [JSON]
+    output: [TUI]
+    ratings:
+      learning:
+        difficulty: 15
+        status: 5
+      power: 30
+      niceness: 25
+      convenience: 60
+    comments: []
+    tags: [TUI, explorer]
+  - name: jshon
+    requires: [Jansson]
+    install:
+      repo:
+        url: https://github.com/keenerd/jshon
+        dest: $ENV.SOURCE_DIR + "/jshon"
+        cmd: |
+          make
+          make install
+    language:
+      query: DSL
+      src: [C]
+    input: [JSON]
+    output: [None]
+    description: JSON parser designed for convenient shell use
+    ratings:
+      learning:
+        difficulty: None
+        status: 0
+      power: None
+      niceness: None
+      convenience: None
+    comments: [No README on Github repo]
+    tags: []
+  - name: lobar
+    requires: [npm]
+    install:
+      npm:
+        package: lobar
+    language:
+      query: Javascript
+      src: [node.js]
+    input: [JSON]
+    output: [JSON]
+    description: Thin CLI wrapper around lodash functions
+    ratings:
+      learning:
+        difficulty: 10
+        status: 95
+      power: 85
+      niceness: 50
+      convenience: 80
+    comments: []
+    tags: [javascript, lodash, interactive]
+  - name: mario
+    url: https://github.com/python-mario/mario
+    requires: [Python]
+    install:
+      pipx:
+        package: mario
+        version: 3.7
+    plugins:
+      - pipx:   # Use pipx inject
+          package: mario-addons
+    language:
+      query: DSL
+      src: [Python]
+    input: [CSV, JSON, YAML, TOML, XML]
+    output: [CSV, JSON, YAML, TOML, XML]
+    description: Makes pre-written Python commands/scripts available as shell commands
+    ratings:
+      learning:
+        difficulty: 10
+        status: 95
+      power: 85
+      niceness: 50
+      convenience: 80
+    comments: []
+    tags: [javascript, lodash, interactive]
+  - name: pyped
+    url: https://github.com/ksamuel/Pyped
+    requires: [Python]
+    install:
+      pipx:
+        package: pyped
+        version: None
+    plugins: []
+    language:
+      query: Python
+      src: [Python]
+    input: [...]
+    output: [...]
+    description: Converts Python one-liners into Unix filters
+    ratings:
+      learning:
+        difficulty: 10
+        status: 95
+      power: 90
+      niceness: 90
+      convenience: 90
+    comments: []
+    tags: [filter]
+  - name: rq
+    url: https://github.com/dflemstr/rq
+    requires: [Rust]
+    install:
+      cargo:
+        package: record-query
+    plugins: []
+    language:
+      query: DSL
+      src: [Rust]
+    input: [Apache Avro, CBOR, JSON, MessagePack, Google Protocol Buffers, YAML, TOML, text, CSV]
+    output: [Apache Avro, CBOR, JSON, MessagePack, YAML, TOML, text, CSV]
+    description: "Record Query: A tool for analyzing and transforming structured-text records"
+    ratings:
+      learning:
+        difficulty: 50
+        status: 70
+      power: 70
+      niceness: 90
+      convenience: 90
+    comments: []
+    tags: []
+  - name: ramda-cli
+    url: https://github.com/raine/ramda-cli
+    requires: [npm]
+    install:
+      npm:
+        package: ramda-cli
+    plugins: []
+    language:
+      query: Javascript, ramda, LiveScript
+      src: [Javascript, LiveScript, node.js]
+    input: [JSON]
+    output: [text, JSON]
+    description: Build functional pipelines for processing data using Javascript and Ramda API
+    ratings:
+      learning:
+        difficulty: 60
+        status: 60
+      power: 90
+      niceness: 80
+      convenience: 80
+    comments: []
+    tags: []
+  - name: jello
+    url: https://github.com/kellyjonbrazil/jello
+    requires: [pip]
+    install:
+      pipx:
+        package: jello
+        version: None
+    plugins: []
+    language:
+      query: Python
+      src: [Python]
+    input: [JSON, JSON Lines]
+    output: [text, JSON]
+    description: Query JSON and JSON Lines using plain Python code
+    ratings:
+      learning:
+        difficulty: 20
+        status: 90
+      power: 90
+      niceness: 90
+      convenience: 90
+    comments: []
+    tags: []
+  - name: xsv
+    url: https://github.com/BurntSushi/xsv
+    requires: [Rust]
+    install:
+      cargo:
+        package: xsv
+    plugins: []
+    language:
+      query: DSL (SQL-like)
+      src: [Rust]
+    input: [CSV]
+    output: [text, CSV]
+    description: "CSV Swiss-Army knife: indexing, slicing, splitting, joining, and analysis"
+    ratings:
+      learning:
+        difficulty: 65
+        status: 10
+      power: 70
+      niceness: 60
+      convenience: 60
+    comments: []
+    tags: []
+  - name: hawk
+    url: https://github.com/gelisam/hawk
+    requires: [cabal, stack]
+    install:
+      cabal:
+        package: haskell-awk
+      stack:
+        package: haskell-awk
+    plugins: []
+    language:
+      query: Haskell
+      src: [Haskell]
+    input: [text]
+    output: [text]
+    description: Awk-like functionality with Haskell commands
+    ratings:
+      learning:
+        difficulty: 85
+        status: 70
+      power: 80
+      niceness: 95
+      convenience: 75
+    comments: []
+    tags: []
+  - name: datamash
+    url: https://www.gnu.org/software/datamash/
+    requires: []
+    install:
+      dnf:
+        package: datamash
+        comment: None
+    plugins: []
+    language:
+      query: DSL
+      src: []
+    input: [text]
+    output: [text]
+    description: CLI tool for analyzing textual data files
+    ratings:
+      learning:
+        difficulty: 70
+        status: 0
+      power: 60
+      niceness: 50
+      convenience: 50
+    comments: []
+    tags: []
+  - name: pawk
+    url: https://github.com/alecthomas/pawk
+    requires: [pip]
+    install:
+      pipx:
+        package: pawk
+        version: None
+    plugins: []
+    language:
+      query: Python, DSL
+      src: [Python]
+    input: [text]
+    output: [text]
+    description: Awk-like CLI tool with Python functions and expressions
+    ratings:
+      learning:
+        difficulty: 30
+        status: 90
+      power: 80
+      niceness: 80
+      convenience: 80
+    comments: []
+    tags: []
+  - name: rows
+    url: https://github.com/turicas/rows
+    requires: [pip]
+    install:
+      pipx:
+        package: rows
+        version: None
+    plugins: []
+    language:
+      query: Python
+      src: [Python]
+    input: [CSV, TSV, ...]
+    output: [TUI]
+    description: Display, explore, and parse tabular data as Python objects
+    ratings:
+      learning:
+        difficulty: 50
+        status: 50
+      power: 80
+      niceness: 80
+      convenience: 80
+    comments: []
+    tags: []
+  - name: scrubcsv
+    url: https://github.com/faradayio/scrubcsv
+    requires: [Rust]
+    install:
+      cargo:
+        package: scrubcsv
+    plugins: []
+    language:
+      query: UNIX
+      src: [Rust]
+    input: [CSV]
+    output: [CSV]
+    description: CLI utility to scrub possibly-corrupted CSV files
+    ratings:
+      learning:
+        difficulty: 10
+        status: 90
+      power: 90
+      niceness: 90
+      convenience: 90
+    comments: []
+    tags: []
+  - name: teip
+    url: https://github.com/greymd/teip
+    requires: [Rust]
+    install:
+      cargo:
+        package: teip
+    plugins: []
+    language:
+      query: UNIX
+      src: [Rust]
+    input: [text]
+    output: [text]
+    description: Replace text selections with output of arbitrary commands
+    ratings:
+      learning:
+        difficulty: 30
+        status: 70
+      power: 60
+      niceness: 80
+      convenience: 80
+    comments: []
+    tags: []
+  - name: hred
+    url: https://github.com/danburzo/hred
+    requires: [npm]
+    install:
+      npm:
+        package: hred
+    plugins: []
+    language:
+      query: CSS, QSX
+      src: [Javascript, node.js]
+    input: [HTML]
+    output: [JSON]
+    description: Use CSS selectors and QSX queries to select parts of an HTML document and export to JSON
+    ratings:
+      learning:
+        difficulty: 55
+        status: 60
+      power: 70
+      niceness: 85
+      convenience: 85
+    comments: []
+    tags: []
+  - name: tq
+    url: https://github.com/plainas/tq
+    requires: [pip]
+    install:
+      pipx:
+        package: tq
+        version: None
+      pip:
+        repo: https://github.com/plainas/tq/zipball/stable
+    plugins: []
+    language:
+      query: CSS
+      src: [Python]
+    input: [HTML]
+    output: [HTML, text]
+    description: Query HTML input with CSS selectors
+    ratings:
+      learning:
+        difficulty: 30
+        status: 90
+      power: 80
+      niceness: 80
+      convenience: 80
+    comments: []
+    tags: []
+  - name: remarshal
+    url: https://github.com/dbohdan/remarshal
+    requires: [pip]
+    install:
+      pipx:
+        package: remarshal
+        version: None
+    plugins: []
+    language:
+      query: UNIX
+      src: [Python]
+    input: [CBOR, JSON, MsgPack, TOML, YAML]
+    output: [CBOR, JSON, MsgPack, TOML, YAML]
+    description: Freely convert between different markup and structured text formats
+    ratings:
+      learning:
+        difficulty: 10
+        status: 90
+      power: 85
+      niceness: 90
+      convenience: 95
+    comments: []
+    tags: []
