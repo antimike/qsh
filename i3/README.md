@@ -9,3 +9,7 @@
 
 * xcompmgr: Required for (among other things) Zoom annotations
     * See [this gist](https://gist.github.com/fntlnz/0572761e0a6d7bdda2af)
+
+## TODOs
+
+* Ensure Dunst notifications are hidden when screen is locked
