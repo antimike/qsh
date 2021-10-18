@@ -71,7 +71,7 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "spaceship" "avit")
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse zsh-vi-mode)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf vi-mode zsh-vi-mode git colorize command-not-found copybuffer copydir copyfile dnf extract github git-prompt pip safe-paste sudo taskwarrior themes web-search autojump zsh_reload zsh-syntax-highlighting colored-man-pages dotbare z git-annex cabal cargo)
+plugins=(fzf vi-mode zsh-vi-mode git colorize command-not-found copybuffer copydir copyfile dnf extract github git-prompt pip safe-paste sudo taskwarrior themes web-search autojump zsh-syntax-highlighting colored-man-pages dotbare z git-annex cabal cargo)
 plugins+=(dircycle)
 plugins+=(asdf)
 # Plugins to consider:
