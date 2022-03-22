@@ -15,6 +15,22 @@ ZSH_THEME="random"
 # a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "spaceship" "avit")
+ZSH_THEME_RANDOM_CANDIDATES+=( "sorin" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "fox" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "ys" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "lambda" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "smt" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "fletcherm" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "wezm" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "nanotech" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "mira" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "dst" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "muse" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "mlh" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "tonotdo" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "cloud" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "cypher" )
+ZSH_THEME_RANDOM_CANDIDATES+=( "candy" )
 # Themes tried and rejected: "bira"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -71,7 +87,8 @@ ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" "spaceship" "avit")
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse zsh-vi-mode)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf vi-mode zsh-vi-mode git colorize command-not-found copybuffer copydir copyfile dnf extract github git-prompt pip safe-paste sudo taskwarrior themes web-search autojump zsh-syntax-highlighting colored-man-pages dotbare z git-annex cabal cargo)
+plugins=(fzf vi-mode git colorize command-not-found copybuffer copydir copyfile dnf extract github git-prompt pip safe-paste sudo taskwarrior themes web-search autojump zsh-syntax-highlighting colored-man-pages dotbare z git-annex cabal cargo)
+plugins+=(zsh-vi-mode)
 plugins+=(dircycle)
 plugins+=(asdf)
 # Plugins to consider:
@@ -85,6 +102,11 @@ plugins+=(asdf)
 # dotenv (same as direnv, but without dependency on external direnv tool)
 # fbterm
 
+# Auto-generated completions
+export GENCOMPL_FPATH=$ZSH/custom/functions/completion
+source $ZSH/custom/plugins/zsh-completion-generator/zsh-completion-generator.plugin.zsh
+
+# OMZ init script
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -121,14 +143,10 @@ unsetopt HIST_VERIFY
 setopt HIST_IGNORE_SPACE
 
 # source $SOURCE_DIR/forgit/forgit.plugin.zsh
-# # eval "$(mcfly init zsh)"
-# # Something to consider: Adding personal zsh completion/functions dir
-# # See https://superuser.com/questions/431758/adding-a-trigger-command-to-autocomplete-function-in-zsh
-# # fpath=($DOTFILES/tag-terminal/functions-personal $fpath)
-# source ${SOURCE_DIR}/forgit/forgit.plugin.zsh
+eval "$(mcfly init zsh)"
+source <(cod init $$ zsh)
 # _dotbare_completion_cmd
-# 
-zvm_after_init_commands+=(zvm_init zvm_init_fzf)
+
 [[ -s "$MARKER_SOURCE" ]] && source "$MARKER_SOURCE"
 # eval "$(fasd --init auto)"
 # source "$SOURCE_DIR/fuzzy-fs/fuzzy-fs"
@@ -141,3 +159,9 @@ source /usr/share/autojump/autojump.zsh
 # TODO: Improve this with personalized run-help implementation
 unalias run-help
 autoload run-help
+
+function zvm_after_init() {
+  source $ZSH/plugins/fzf/fzf.plugin.zsh
+  # TODO: Figure out what's wrong with the following line
+  eval $(mcfly init zsh)
+}
